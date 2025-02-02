@@ -1,0 +1,43 @@
+[*.{cs,vb}]
+
+# Default severity for analyzer diagnostics with category 'Style' (escalated to build warnings)
+dotnet_analyzer_diagnostic.category-Style.severity = warning
+
+# require this qualifier for properties and methods
+dotnet_style_qualification_for_property = true
+dotnet_style_qualification_for_method = true
+
+csharp_style_implicit_object_creation_when_type_is_apparent = false
+
+#disable warning for simple collection initializers
+dotnet_diagnostic.IDE0028.severity = none
+
+#disable warning for unused return values
+dotnet_diagnostic.IDE0058.severity = none
+
+#disable warning for primary constructors
+dotnet_diagnostic.IDE0290.severity = none
+
+#disable warning for no xml comment 
+dotnet_diagnostic.CS1591.severity = warning
+
+########## private fields require underscore ############
+# Define the 'private_fields' symbol group:
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+# Define the 'private_static_fields' symbol group
+dotnet_naming_symbols.private_static_fields.applicable_kinds = field
+dotnet_naming_symbols.private_static_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_static_fields.required_modifiers = static
+# Define the 'underscored' naming style
+dotnet_naming_style.underscored.capitalization = camel_case
+dotnet_naming_style.underscored.required_prefix = _
+# Define the 'private_fields_underscored' naming rule
+dotnet_naming_rule.private_fields_underscored.symbols = private_fields
+dotnet_naming_rule.private_fields_underscored.style = underscored
+dotnet_naming_rule.private_fields_underscored.severity = warning
+# Define the 'private_static_fields_none' naming rule
+dotnet_naming_rule.private_static_fields_none.symbols = private_static_fields
+dotnet_naming_rule.private_static_fields_none.style = underscored
+dotnet_naming_rule.private_static_fields_none.severity = none
+

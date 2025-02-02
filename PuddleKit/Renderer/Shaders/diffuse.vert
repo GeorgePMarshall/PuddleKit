@@ -1,0 +1,27 @@
+#version 330 core
+
+layout (location = 0) in vec3 aPosition;
+layout (location = 1) in vec3 aNormal;
+layout (location = 2) in vec2 aTexCoord;
+
+out vec2 texCoord;
+out vec3 normal;
+out vec3 fragPosition;
+
+uniform mat4 objectTransform;
+uniform mat4 viewProjectionTransform;
+
+void main()
+{
+    //pass tex cood to frag shader
+    texCoord = aTexCoord;
+
+    //transform normal vector
+    normal = mat3(transpose(inverse(objectTransform))) * aNormal;
+
+    //calcualte world space position of fragment for frag shader
+    fragPosition = vec3(vec4(aPosition, 1.0f) * objectTransform);
+
+    //apply vertex transformations 
+    gl_Position = vec4(aPosition, 1.0f) * objectTransform * viewProjectionTransform;
+}
